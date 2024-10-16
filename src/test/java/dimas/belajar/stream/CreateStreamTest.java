@@ -3,6 +3,8 @@ package dimas.belajar.stream;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class CreateStreamTest {
@@ -42,5 +44,27 @@ public class CreateStreamTest {
         streamFromArray.forEach(name -> System.out.println(name));
 
     }
+
+    @Test
+    void testCreateStreamFromCollection() {
+        Collection<String> stringCollection = List.of("Hari", "ini", "hujan");
+        Stream<String> stringStream = stringCollection.stream();
+        stringStream.forEach(System.out::println);
+
+//      jika stream telah di alirkan lalu dialirkan kembali maka akan terdapat error
+//      stringStream.forEach(System.out::println);
+    }
+
+    @Test
+    void testCreateInfiniteStream() {
+
+//      infinte loop
+        Stream<String> stream = Stream.generate(() -> "Programmer JAVA");
+//        stream.forEach(System.out::println);
+
+        Stream<Integer> iterate = Stream.iterate(1, value -> value + 1);
+//        iterate.forEach(System.out::println);
+    }
+
 
 }
