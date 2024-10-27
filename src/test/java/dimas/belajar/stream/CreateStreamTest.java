@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Stream;
 
 public class CreateStreamTest {
@@ -64,6 +65,22 @@ public class CreateStreamTest {
 
         Stream<Integer> iterate = Stream.iterate(1, value -> value + 1);
 //        iterate.forEach(System.out::println);
+    }
+
+    @Test
+    void testCreateStreamBuilder() {
+        Stream.Builder<String> builder = Stream.builder();
+        builder.accept("KUE");
+        builder.add("BOLU").add("COKLAT");
+
+        Stream<String> stream = builder.build();
+        stream.forEach(System.out::println);
+    }
+
+    @Test
+    void testCreateStreamBuilder2() {
+        Stream<Object> stream = Stream.builder().add("KUE").add("BOLU").add("COKLAT").build();
+        stream.forEach(System.out::println);
     }
 
 
