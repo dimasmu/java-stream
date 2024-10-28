@@ -25,6 +25,9 @@ public class LazyEvaluationTest {
         names.stream().map(name -> {
             System.out.println("Change " + name + " to uppercase");
             return name.toUpperCase();
+        }).map(upper -> {
+            System.out.println("Change " + upper + " to Mr. ");
+            return "Mr. " + upper;
         }).forEach(System.out::println);
     }
 
